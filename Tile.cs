@@ -1,38 +1,30 @@
-using System;
-
 namespace TicTacToe
 {
-  enum Players
-  {
-    X,
-    O
-  }
   class Tile
   {
     private bool isOcupied;
-    private Players player;
+    private char player;
 
     public Tile()
     {
       isOcupied = false;
+      player = ' ';
     }
 
     public bool IsOcupied
     {
-      get => return;
+      get => isOcupied;
+    }
+
+    public char Player
+    {
+      get => player;
       set {
         if (!isOcupied)
         {
+          player = value;
           isOcupied = true;
         }
-      }
-    }
-
-    public Players Player
-    {
-      get => return;
-      set {
-        if (!isOcupied) player = value;
       }
     }
   }
