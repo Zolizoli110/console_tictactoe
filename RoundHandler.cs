@@ -14,21 +14,34 @@ namespace TicTacToe
       renderer.Render();
     }
 
-    public bool Play(int x, int y)
+    public bool Play()
     {
+
       if(round % 2 == 0 )
       {
-        table.SetPlayer(x, y, 'X');
+        Console.WriteLine("X's turn!");
+        string line = Console.ReadLine()!;
+        string[] tmp = line.Split(' ');
+        int[] move = {int.Parse(tmp[0]), int.Parse(tmp[1])};
+        table.SetPlayer(move[0], move[1], 'X');
         round++;
       } 
       else 
       {
-        table.SetPlayer(x, y, 'O');
+        Console.WriteLine("O's turn!");
+        string line = Console.ReadLine()!;
+        string[] tmp = line.Split(' ');
+        int[] move = {int.Parse(tmp[0]), int.Parse(tmp[1])};
+        table.SetPlayer(move[0], move[1], 'O');
         round++;
       }
       renderer.ChangeCellValue();
       renderer.Render();
-      return table.CheckWin();
+      if (table.CheckWin() != ' ')
+      {
+        return false;
+      }
+      return table.CheckDraw();
     }
   }
 }
