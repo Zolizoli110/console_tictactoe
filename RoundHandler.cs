@@ -2,7 +2,7 @@ namespace TicTacToe
 {
   class RoundHandler
   {
-    private int round;
+    private static int round;
     private Renderer renderer;
     private Table table;
 
@@ -24,7 +24,6 @@ namespace TicTacToe
         string[] tmp = line.Split(' ');
         int[] move = {int.Parse(tmp[0]), int.Parse(tmp[1])};
         table.SetPlayer(move[0], move[1], 'X');
-        round++;
       } 
       else 
       {
@@ -33,7 +32,6 @@ namespace TicTacToe
         string[] tmp = line.Split(' ');
         int[] move = {int.Parse(tmp[0]), int.Parse(tmp[1])};
         table.SetPlayer(move[0], move[1], 'O');
-        round++;
       }
       renderer.ChangeCellValue();
       renderer.Render();
@@ -42,6 +40,11 @@ namespace TicTacToe
         return false;
       }
       return table.CheckDraw();
+    }
+
+    public static void RaiseRound()
+    {
+      round++;
     }
   }
 }

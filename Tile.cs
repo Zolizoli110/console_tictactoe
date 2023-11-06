@@ -22,6 +22,7 @@ namespace TicTacToe
       set {
         if (!isOcupied)
         {
+          RoundHandler.RaiseRound();
           player = value;
           isOcupied = true;
         }
